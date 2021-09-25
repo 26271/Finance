@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <td colspan="4"> </td>
+                <td><b>{{ g_total | usd }}</b></td>
+            </tfoot>
+            <tbody>
+                {% for portfolio in portfolios %}
+                    <tr>
+                    <td>{{ portfolio.stocks }}</td>
+                    <td>{{ portfolio.name }}</td>
+                    <td>{{ portfolio.shares }}</td>
+                    <td>{{ portfolio.price | usd }}</td>
+                    <td>{{ portfolio.total | usd }}</td>
+                    {% endfor %}
+                     </tr>
+                    <tr>
+                        <td>CASH</td>
+                        <td colspan="3"></td>
+                        <td>{{ cash | usd }}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+{% endblock %}
